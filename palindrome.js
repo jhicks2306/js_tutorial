@@ -9,8 +9,7 @@ function palindrome(string) {
   return processedContent === reverse(processedContent);
 }
 
-//Returns parts of an email.
-function emailParts(email) {
-  let processedContent = email.toLowerCase();
-  return processedContent.split(/(?=@)/g)
+// Defines a Phrase object
+function Phrase(content) {
+  this.content = content;
 }
