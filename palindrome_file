@@ -1,0 +1,18 @@
+#!/usr/local/bin/node
+
+let fs = require("fs");
+let Phrase = require("palindrome-detector-jhicks2306");
+
+let text = fs.readFileSync("phrases.txt", "utf-8");
+text.split("\n").forEach(function(line) {
+  let phrase = new Phrase(line);
+  if (phrase.palindrome()) {
+    console.log("palindrome detected:", line);
+    // fs.appendFile('/Users/james/testP.txt', "palindrome detected: " + line + "\n", err => {
+    // if (err) {
+    //   console.error(err);
+    //   return;
+    // }
+    // })
+  }
+});
