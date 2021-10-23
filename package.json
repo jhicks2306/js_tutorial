@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "palindrome-detector-jhicks2306": "^0.1.1"
+    "palindrome-detector-jhicks2306": "^0.1.1",
+    "urllib": "^2.37.4"
   }
 }
