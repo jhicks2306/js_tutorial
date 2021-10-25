@@ -5,25 +5,32 @@
 let urllib = require("urllib");
 let url = process.argv[2];
 
+// Catch no argument provided and throw error message
+if (url === undefined) {
+  console.log("You need to provide wikp with a url");
+  process.exit()
+}
+
 let jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 
 urllib.request(url, { followRedirect: true }, function(error, data, response) {
   let body = data.toString();
-  // Simulate a Document Object Model.
-  let { document } = (new JSDOM(body)).window;
 
-  // Grab all the paragraphs and references
-  let paragraphs = document.querySelectorAll("p");
-  let references = document.querySelectorAll(".reference");
+    // Simulate a Document Object Model.
+    let { document } = (new JSDOM(body)).window;
 
-  // Remove any references
-  references.forEach(function(reference) {
-    reference.remove();
-  });
+    // Grab all the paragraphs and references
+    let paragraphs = document.querySelectorAll("p");
+    let references = document.querySelectorAll(".reference");
 
-  // Print out all of the paragraphs
-  paragraphs.forEach(function(paragraph) {
-    console.log(paragraph.textContent);
-  });
+    // Remove any references
+    references.forEach(function(reference) {
+      reference.remove();
+    });
+
+    // Print out all of the paragraphs
+    paragraphs.forEach(function(paragraph) {
+      console.log(paragraph.textContent);
+    });
 });
